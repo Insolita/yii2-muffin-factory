@@ -37,6 +37,7 @@ class Factory implements ArrayAccess
      * Create a new factory instance.
      *
      * @param  \Faker\Generator $faker
+     * @param string            $factoryPath
      */
     public function __construct(Faker $faker, $factoryPath = '@tests/factories')
     {
@@ -96,7 +97,7 @@ class Factory implements ArrayAccess
      * @param  string $class
      * @param  array  $attributes
      *
-     * @return mixed
+     * @return \yii\db\ActiveRecord|\yii\db\ActiveRecord[]
      */
     public function create($class, array $attributes = [])
     {
@@ -110,7 +111,7 @@ class Factory implements ArrayAccess
      * @param  string $name
      * @param  array  $attributes
      *
-     * @return mixed
+     * @return \yii\db\ActiveRecord|\yii\db\ActiveRecord[]
      */
     public function createAs($class, $name, array $attributes = [])
     {
@@ -123,7 +124,7 @@ class Factory implements ArrayAccess
      * @param  string $class
      * @param  array  $attributes
      *
-     * @return mixed
+     * @return \yii\db\ActiveRecord|\yii\db\ActiveRecord[]
      */
     public function make($class, array $attributes = [])
     {
@@ -137,7 +138,7 @@ class Factory implements ArrayAccess
      * @param  string $name
      * @param  array  $attributes
      *
-     * @return mixed
+     * @return \yii\db\ActiveRecord|\yii\db\ActiveRecord[]
      */
     public function makeAs($class, $name, array $attributes = [])
     {

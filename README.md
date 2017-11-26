@@ -90,6 +90,8 @@ $user = factory(User::class)->create();
 $users = factory(User::class, 10)->states(['client'])->create(['registered'=>Carbon::now()]);
 ```
 
+See more examples in [FactoryTest](tests/unit/FactoryTest.php)
+
 Use with ActiveFixtures
 =======================
 Create ActiveFixture extended classed in configured directory as usual
@@ -143,7 +145,7 @@ class SomeFixture extends ActiveFixture
         $developer = User::find()->where(['status'=>'developer'])->limit(1)->one();
         $data =  array_merge(
             factory(Some::class, 5)->raw(['user_id'=>ArrayHelper::random($users)]),
-            factory(Some::class, 20)->states('one')->raw(['user_id'=>ArrayHelper::random($users)]),
+            factory(Some::class, 20)->states('one')->raw(['user_id'=>function() use(&$users){ return ArrayHelper::random($users);}]),
             factory(Some::class, 11)->states('two')->raw(['user_id'=>$developer->id])
         );
         return $data;
