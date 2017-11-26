@@ -25,8 +25,6 @@ use yii\db\ActiveRecord;
  */
 class User extends ActiveRecord
 {
-    use StaticInstanceTrait;
-    
     public function getPosts()
     {
         return $this->hasMany(Post::class, ['createdBy' => 'id']);
