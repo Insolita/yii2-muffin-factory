@@ -21,7 +21,7 @@ in require-dev section of your `composer.json` file.
 Configure
 ---------
 
-Add in bootstrap
+Add in bootstrap for test suite (or in every app, when it can be used)
 
 ```php
 //with default factory path by alias @tests/factories
