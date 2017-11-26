@@ -10,6 +10,12 @@
             "email": "webmaster100500@ya.ru"
         }
     ] ,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
     "require":     {
         "php":           ">=7.0" ,
         "yiisoft/yii2":  "~2.0.10",
@@ -29,5 +35,18 @@
         "files": [
             "src/helpers.php"
         ]
+    },
+    "config": {
+        "process-timeout": 1800,
+        "fxp-asset":{
+            "installer-paths":{
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            },
+            "pattern-skip-version": "(-build|-patch)",
+            "vcs-driver-options":{
+                "github-no-api": true
+            }
+        }
     }
 }
