@@ -23,8 +23,7 @@ Configure
 
 Add in bootstrap
 
-```
-php
+```php
 //with default factory path by alias @tests/factories
 Yii::$container->setSingleton(\insolita\muffin\Factory::class, [], [\Faker\Factory::create('en_EN')]);
 
@@ -91,3 +90,63 @@ $user = factory(User::class)->create();
 $users = factory(User::class, 10)->states(['client'])->create(['registered'=>Carbon::now()]);
 ```
 
+Use with ActiveFixtures
+=======================
+Create ActiveFixture extended classed in configured directory as usual
+
+```php
+
+class UserFixture extends ActiveFixture
+{
+    public $modelClass = User::class;
+
+    protected function getData()
+    {
+        return array_merge(
+            factory(User::class, 1)->states('developer')->raw(),
+            factory(User::class, 10)->states('client')->raw()
+        );
+    }
+}
+```
+
+*Fixtures with relation dependency*
+
+```php
+class PostFixture extends ActiveFixture
+{
+    public $modelClass = Post::class;
+    public $depends = [UserFixture::class];
+
+    public function load()
+    {
+        $this->data = [];
+        $users = User::find()->select(['id'])->column();
+        foreach ($users as $userId) {
+            $posts = factory(Post::class, 5)->create(['createdBy' => $userId]);
+            foreach ($posts as $post) {
+                $this->data[$post->id] = $post->getAttributes();
+            }
+        }
+        return $this->data;
+    }
+}
+
+class SomeFixture extends ActiveFixture
+{
+    public $modelClass = Some::class;
+    public $depends = [UserFixture::class];
+
+    protected function getData()
+    {
+        $users = User::find()->select(['id'])->where(['status'=>'client'])->column();
+        $developer = User::find()->where(['status'=>'developer'])->limit(1)->one();
+        $data =  array_merge(
+            factory(Some::class, 5)->raw(['user_id'=>ArrayHelper::random($users)]),
+            factory(Some::class, 20)->states('one')->raw(['user_id'=>ArrayHelper::random($users)]),
+            factory(Some::class, 11)->states('two')->raw(['user_id'=>$developer->id])
+        );
+        return $data;
+    }
+}
+```

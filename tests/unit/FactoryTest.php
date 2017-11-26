@@ -54,6 +54,16 @@ class FactoryTest extends YiiCase
             expect($user->status)->equals('special');
             expect($user->email)->equals('foo@bar.baz');
         });
+        $this->it('can make single model with custom attributes using previous generated data', function () {
+            /**@var User $user * */
+            $user = factory(User::class)->make([
+                'name' => function ($data) {
+                    return 'special_' . $data['lastName'];
+                },
+            ]);
+            expect($user->name)->startsWith('special');
+            expect($user->name)->endsWith($user->lastName);
+        });
     }
     
     public function testMakeBulk()
@@ -91,11 +101,54 @@ class FactoryTest extends YiiCase
                 expect($user->birthday)->equals('2000-04-01');
             }
         });
-        
+        $this->it('can make bulk models with custom attributes using previous generated data', function () {
+            /**@var User[] $users * */
+            $users = factory(User::class, 5)->make([
+                'name' => function ($data) {
+                    return 'special_' . $data['lastName'];
+                },
+            ]);
+            foreach ($users as $user) {
+                expect($user->name)->startsWith('special');
+                expect($user->name)->endsWith($user->lastName);
+            }
+        });
         $this->it('can make bulk models via special times setter', function () {
             /**@var User[] $users * */
             $users = factory(User::class)->times(4)->make();
             expect($users)->count(4);
+        });
+    }
+    
+    public function testRaw()
+    {
+        $this->it('can return raw generated attributes', function () {
+            $data = factory(User::class)->raw();
+            expect($data)->internalType('array');
+            expect($data)->hasKey('name');
+            expect($data)->hasKey('lastName');
+            expect($data)->hasKey('birthday');
+        });
+        $this->it('can return raw generated attributes for bulk models', function () {
+            $datas = factory(User::class, 5)->raw();
+            expect($datas)->count(5);
+            foreach ($datas as $data) {
+                expect($data)->internalType('array');
+                expect($data)->hasKey('name');
+                expect($data)->hasKey('lastName');
+                expect($data)->hasKey('birthday');
+            }
+        });
+    
+        $this->it('can generate additional attributes with previous generated data', function () {
+            $data = factory(User::class)->raw([
+                'name' => function ($data) {
+                    return 'special_' . $data['lastName'];
+                },
+            ]);
+            expect($data)->hasKey('name');
+            expect($data['name'])->startsWith('special');
+            expect($data['name'])->endsWith($data['lastName']);
         });
     }
     
