@@ -8,6 +8,7 @@ namespace tests;
 use Yii;
 use yii\di\Container;
 use function expect;
+use yii\helpers\ArrayHelper;
 
 abstract class YiiCase extends \PHPUnit\Framework\TestCase
 {

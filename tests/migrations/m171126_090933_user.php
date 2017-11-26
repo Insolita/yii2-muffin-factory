@@ -37,19 +37,4 @@ class m171126_090933_user extends Migration
     {
         $this->dropTable('{{%users}}');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m171126_090933_user cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }
