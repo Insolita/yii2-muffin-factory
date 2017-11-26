@@ -30,8 +30,6 @@ Yii::$container->setSingleton(\insolita\muffin\Factory::class, [], [\Faker\Facto
 
 //with custom factory path
 Yii::$container->setSingleton(\insolita\muffin\Factory::class, [], [\Faker\Factory::create('en_EN'), '@common/data/factories']);
-
-require(Yii::getAlias('@vendor/insolita/yii2-muffin/src/helpers.php'));
 ```
 
 Create Factories
