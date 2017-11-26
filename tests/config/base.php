@@ -1,7 +1,6 @@
 <?php
 use insolita\muffin\Factory;
 
-Yii::setAlias('@tests', dirname(__DIR__).'/tests');
 Yii::$container->setSingleton(Factory::class, [], [\Faker\Factory::create('ru_RU')]);
 
 return [
