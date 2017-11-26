@@ -9,12 +9,12 @@ Installation
 Either run
 
 ```
-composer require -dev insolita/yii2-muffin:~0.0.2
+composer require -dev insolita/yii2-muffin-factory:~0.0.3
 ```
 or add
 
 ```
-"insolita/yii2-muffin": "~0.0.2"
+"insolita/yii2-muffin-factory": "~0.0.3"
 ```
 in require-dev section of your `composer.json` file.
 
