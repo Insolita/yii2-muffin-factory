@@ -1,8 +1,8 @@
 Yii2 Muffin Factory
 ===================
- Port of laravel factory for data seeding
+ A Port of laravel factory for generate fixtures on fly and database seeding
 
-[![Build Status](https://travis-ci.org/Insolita/yii2-muffin.svg?branch=master)](https://travis-ci.org/Insolita/yii2-muffin)
+[![Build Status](https://travis-ci.org/Insolita/yii2-muffin-factory.svg?branch=master)](https://travis-ci.org/Insolita/yii2-muffin-factory)
 
 Installation
 ============
