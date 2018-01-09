@@ -7,8 +7,8 @@ namespace tests;
 
 use Yii;
 use yii\di\Container;
-use function expect;
 use yii\helpers\ArrayHelper;
+use function expect;
 
 abstract class YiiCase extends \PHPUnit\Framework\TestCase
 {
@@ -53,6 +53,7 @@ abstract class YiiCase extends \PHPUnit\Framework\TestCase
         $result = $model::find()->where($attributes)->limit(1)->one();
         expect($result)->notNull();
     }
+    
     /**
      * @param  \yii\db\ActiveRecord $model
      * @param array                 $attributes
@@ -62,6 +63,7 @@ abstract class YiiCase extends \PHPUnit\Framework\TestCase
         $result = $model::find()->where($attributes)->limit(1)->one();
         expect($result)->null();
     }
+    
     /**
      * @param  \yii\db\ActiveRecord $model
      * @param array                 $attributes
