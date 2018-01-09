@@ -124,7 +124,8 @@ class FactoryBuilder
      *
      * @param  array $attributes
      *
-     * @return mixed
+     * @return  mixed
+     * @throws \InvalidArgumentException
      */
     public function create(array $attributes = [])
     {
@@ -145,6 +146,7 @@ class FactoryBuilder
      * @param  array $attributes
      *
      * @return array|ActiveRecord[]|ActiveRecord
+     * @throws \InvalidArgumentException
      */
     public function make(array $attributes = [])
     {
@@ -169,6 +171,7 @@ class FactoryBuilder
      * @param  array $attributes
      *
      * @return mixed
+     * @throws \InvalidArgumentException
      */
     public function raw(array $attributes = [])
     {
@@ -203,6 +206,7 @@ class FactoryBuilder
      * @param  array $attributes
      *
      * @return mixed
+     * @throws \InvalidArgumentException
      */
     protected function getRawAttributes(array $attributes = [])
     {
@@ -250,13 +254,11 @@ class FactoryBuilder
             if (!isset($this->states[$this->class][$state])) {
                 throw new \InvalidArgumentException("Unable to locate [{$state}] state for [{$this->class}].");
             }
-            
             $definition = array_merge(
                 $definition,
                 $this->stateAttributes($state, $attributes)
             );
         }
-        
         return $definition;
     }
     

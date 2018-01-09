@@ -125,6 +125,7 @@ class Factory implements ArrayAccess
      * @param  array  $attributes
      *
      * @return \yii\db\ActiveRecord|\yii\db\ActiveRecord[]
+     * @throws \InvalidArgumentException
      */
     public function make($class, array $attributes = [])
     {
@@ -139,6 +140,7 @@ class Factory implements ArrayAccess
      * @param  array  $attributes
      *
      * @return \yii\db\ActiveRecord|\yii\db\ActiveRecord[]
+     * @throws \InvalidArgumentException
      */
     public function makeAs($class, $name, array $attributes = [])
     {
@@ -210,10 +212,7 @@ class Factory implements ArrayAccess
     }
     
     /**
-     * Determine if the given offset exists.
-     *
      * @param  string $offset
-     *
      * @return bool
      */
     public function offsetExists($offset)
@@ -222,11 +221,9 @@ class Factory implements ArrayAccess
     }
     
     /**
-     * Get the value of the given offset.
-     *
      * @param  string $offset
-     *
      * @return mixed
+     * @throws \InvalidArgumentException
      */
     public function offsetGet($offset)
     {
@@ -234,8 +231,6 @@ class Factory implements ArrayAccess
     }
     
     /**
-     * Set the given offset to the given value.
-     *
      * @param  string   $offset
      * @param  callable $value
      *
@@ -247,8 +242,6 @@ class Factory implements ArrayAccess
     }
     
     /**
-     * Unset the value at the given offset.
-     *
      * @param  string $offset
      *
      * @return void

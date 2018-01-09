@@ -9,12 +9,12 @@ Installation
 Either run
 
 ```
-composer require -dev insolita/yii2-muffin-factory:~0.0.3
+composer require -dev insolita/yii2-muffin-factory:~1.0.0
 ```
 or add
 
 ```
-"insolita/yii2-muffin-factory": "~0.0.3"
+"insolita/yii2-muffin-factory": "~1.0.0"
 ```
 in require-dev section of your `composer.json` file.
 
@@ -25,10 +25,21 @@ Add in bootstrap for test suite (or in every app, where it can be used)
 
 ```php
 //with default factory path by alias @tests/factories
-Yii::$container->setSingleton(\insolita\muffin\Factory::class, [], [\Faker\Factory::create('en_EN')]);
+Yii::$container->setSingleton(
+     \insolita\muffin\Factory::class,
+      [],
+     [\Faker\Factory::create('en_EN')]
+  );
 
 //with custom factory path
-Yii::$container->setSingleton(\insolita\muffin\Factory::class, [], [\Faker\Factory::create('ru_RU'), '@common/data/factories']);
+Yii::$container->setSingleton(
+     \insolita\muffin\Factory::class,
+     [],
+     [
+         \Faker\Factory::create('ru_RU'),  //Faker language
+          '@common/data/factories'         // Custom directory for factories
+     ]
+ );
 ```
 
 Create Factories
