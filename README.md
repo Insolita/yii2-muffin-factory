@@ -2,7 +2,7 @@ Yii2 Muffin Factory
 ===================
  A Port of laravel factory for generate fixtures on fly and database seeding
 
- 
+![yii2-muffin-factory](https://github.com/Insolita/yii2-muffin-factory/workflows/yii2-muffin-factory/badge.svg)
 
 Installation
 ============
