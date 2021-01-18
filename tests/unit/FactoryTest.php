@@ -16,7 +16,7 @@ class FactoryTest extends YiiCase
 {
     use Specify;
     
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockApplication();
