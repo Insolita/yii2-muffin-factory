@@ -7,6 +7,7 @@ namespace insolita\muffin;
 
 use Faker\Generator as Faker;
 use yii\db\ActiveRecord;
+use function is_array;
 
 class FactoryBuilder
 {
@@ -131,7 +132,7 @@ class FactoryBuilder
     {
         $results = $this->make($attributes);
         
-        if ($results instanceof ActiveRecord) {
+        if (!is_array($results)) {
             $this->store([$results]);
         } else {
             $this->store($results);
