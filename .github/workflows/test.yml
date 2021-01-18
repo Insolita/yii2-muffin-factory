@@ -14,9 +14,9 @@ jobs:
         name: yii2-muffin-factory (PHP ${{ matrix.php-versions }})
         runs-on: ubuntu-latest
         strategy:
-            fail-fast: true
+            fail-fast: false
             matrix:
-                php-versions: ['7.2','7.3', '7.4']
+                php-versions: ['7.2','7.3', '7.4', '8.0']
 
         steps:
             - uses: actions/checkout@v2
