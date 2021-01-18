@@ -131,11 +131,7 @@ class FactoryBuilder
     {
         $results = $this->make($attributes);
         
-        if ($results instanceof ActiveRecord) {
-            $this->store([$results]);
-        } else {
-            $this->store($results);
-        }
+        $this->store([$results]);
         
         return $results;
     }
