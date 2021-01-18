@@ -11,6 +11,7 @@ use tests\stubs\Post;
 use tests\stubs\User;
 use tests\YiiCase;
 use Yii;
+use function is_array;
 
 class FactoryTest extends YiiCase
 {
@@ -124,7 +125,7 @@ class FactoryTest extends YiiCase
     {
         $this->it('can return raw generated attributes', function () {
             $data = factory(User::class)->raw();
-            expect($data)->internalType('array');
+            expect(is_array($data))->true();
             expect($data)->hasKey('name');
             expect($data)->hasKey('lastName');
             expect($data)->hasKey('birthday');
@@ -133,7 +134,7 @@ class FactoryTest extends YiiCase
             $datas = factory(User::class, 5)->raw();
             expect($datas)->count(5);
             foreach ($datas as $data) {
-                expect($data)->internalType('array');
+                expect(is_array($data))->true();
                 expect($data)->hasKey('name');
                 expect($data)->hasKey('lastName');
                 expect($data)->hasKey('birthday');
