@@ -2,19 +2,19 @@ Yii2 Muffin Factory
 ===================
  A Port of laravel factory for generate fixtures on fly and database seeding
 
-[![Build Status](https://travis-ci.org/Insolita/yii2-muffin-factory.svg?branch=master)](https://travis-ci.org/Insolita/yii2-muffin-factory)
+ 
 
 Installation
 ============
 Either run
 
 ```
-composer require -dev insolita/yii2-muffin-factory:~1.0.0
+composer require -dev insolita/yii2-muffin-factory:~2.0.0
 ```
 or add
 
 ```
-"insolita/yii2-muffin-factory": "~1.0.0"
+"insolita/yii2-muffin-factory": "~2.0.0"
 ```
 in require-dev section of your `composer.json` file.
 

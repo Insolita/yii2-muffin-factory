@@ -14,9 +14,9 @@ return [
     'components'=>[
         'db'=>[
             'class'=>\yii\db\Connection::class,
-            'dsn' => 'mysql:host=localhost;port=3306;dbname=yii2_ext_test',
-            'username' => 'root',
-            'password' => '',
+            'dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=yii2_ext_test',
+            'username' => 'tester',
+            'password' => 'test',
             'charset' => 'utf8',
             'tablePrefix' => 'test_'
         ]
